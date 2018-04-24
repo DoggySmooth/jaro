@@ -1,0 +1,12 @@
+language: python
+sudo: false
+cache: pip
+
+python:
+    - "3.6"
+
+before_install: pip install pipenv
+
+install: make env
+
+script: make all

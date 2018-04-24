@@ -1,0 +1,28 @@
+[[source]]
+
+name = 'pypi'
+verify_ssl = true
+url = 'https://pypi.python.org/simple'
+
+
+[packages]
+
+funcy = "*"
+
+
+[dev-packages]
+
+mypy = "*"
+yapf = "*"
+isort = "*"
+ptpdb = "*"
+twine = "*"
+wheel = "*"
+pytest = "*"
+neovim = "*"
+sphinx = "*"
+ptpython = "*"
+docutils = "*"
+"flake8" = "*"
+hypothesis = "*"
+pytest-cov = "*"

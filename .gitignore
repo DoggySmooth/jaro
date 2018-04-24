@@ -1,0 +1,21 @@
+# python
+*.py[cod]
+*.egg
+*.eggs/
+*.egg-info/
+__pycache__/
+
+# development
+.coverage
+.hypothesis/
+.mypy_cache/
+.pytest_cache/
+
+# distribution
+dist/
+build/
+
+# documentation
+doc/html/
+doc/apidoc/
+doc/doctrees/

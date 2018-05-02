@@ -1,11 +1,6 @@
 			---	JARO DOCUMENTATION	---
 
 
-Title:		JARO
-Author:		Smooth
-Year:		2018
-
-
 JARO defines an standart format for reverse engineer reports of applications. The advantage of JARO is a clear defined data structure allowing users to generate graphs for easy analisis as allowing them to create tools to manipulate the data. Using XML as main format makes it known to the most of people out there and its extensible structure makes changes fast.
 
 There are unlimited manners to write a report of an analisis based on what the reverse

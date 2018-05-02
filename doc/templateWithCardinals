@@ -29,15 +29,18 @@ app
     classes
      class				/1..*
       name
+      malicious				/0..1
       imports
        import				/0..*
       attributes
        attribute			/0..*
         name
         type
+	malicious			/0..1
       methods
        method				/0..*
         name
+	malicious			/0..1
         parameters			/0..1
          parameter			/0..*
           param

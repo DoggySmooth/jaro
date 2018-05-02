@@ -29,15 +29,18 @@ app
     classes
      class
       name
+      malicious
       imports
        import
       attributes
        attribute
         name
         type
+	malicious
       methods
        method
         name
+	malicious
         parameters
          parameter
           param

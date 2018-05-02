@@ -1,11 +1,13 @@
 SHELL = /bin/sh
 
-targetPLIM=$(shell find . -name '*.plim' -exec basename \{} \;)
+targetPLIM=$(shell find . -name '*.plim')
+targetName=$(shell find . -name '*.plim' -exec basename \{} \;)
 targetXML=$(patsubst %.plim,%.xml, $(targetPLIM))
 targetJSON=$(patsubst %.plim,%.json, $(targetPLIM))
-targetHTML=$(patsubst %.plim,%.html, $(targetPLIM))
+targetHTML=$(patsubst %.plim,%.html, $(targetName))
+targetJSOName=$(patsubst %.plim,%.json, $(targetName))
 
-dirName=$(patsubst %.plim,%, $(targetPLIM))
+dirName=$(patsubst %.plim,%, $(targetName))
 
 all: xml json output html
 
@@ -29,5 +31,5 @@ output: $(targetXML) $(targetJSON)
 
 html: $(targetJSON)
 
-	python3 ./htmlMalicious/htmlPython.py ./output/$(dirName)/$(targetJSON) > ./output/$(dirName)/$(targetHTML)
+	python3 ./htmlMalicious/htmlPython.py ./output/$(dirName)/$(targetJSOName) > ./output/$(dirName)/$(targetHTML)
 	tidy -im ./output/$(dirName)/$(targetHTML)

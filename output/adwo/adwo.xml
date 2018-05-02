@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<app>
+  <info>
+    <name>Unknown</name>
+    <sha256>000A0B1022EC485473DFAACA433F9548911BC7089B6A3C7B47F9EC5541005CA1</sha256>
+    <description>chinese app</description>
+    <releasedate>uknown</releasedate>
+    <malwaretype>spyware</malwaretype>
+    <family>adwo</family>
+    <sdk>
+      <targetsdk>uknown</targetsdk>
+      <minsdk>uknown</minsdk>
+      <maxsdk>unknowm</maxsdk>
+    </sdk>
+    <activities>
+      <activity>net.youmi.android.AdActivity</activity>
+      <activity>cn.domob.android.ads.DomobActivity</activity>
+      <activity>com.adwo.adsdk.AdwoAdBrowserActivity</activity>
+      <activity>com.vpon.adon.android.WebInApp</activity>
+      <activity>com.google.ads.AdActivity</activity>
+      <activity>com.adchina.android.ads.views.AdBrowserView</activity>
+    </activities>
+    <provider>GoogleStore</provider>
+    <permissions>
+      <permission>ACCESS_FINE_LOCATION</permission>
+      <permission>READ_SD</permission>
+    </permissions>
+  </info>
+  <analisis>
+    <packages>
+      <pkg>
+        <name>com.adwo.adsdk</name>
+        <malicious>"Malicious behavious has been spotted in line 22"</malicious>
+        <classes>
+          <class>
+            <name>AdwoAdBroswerActivity</name>
+            <malicious>"It looks so strange"</malicious>
+            <imports>
+              <import>com.adwo.adsdk.H</import>
+              <import>com.adwo.adsdk.n</import>
+            </imports>
+            <attributes>
+              <attribute>
+                <name>d</name>
+                <type>Handler</type>
+                <malicious>"Calls a function which writes an URL to USB"</malicious>
+              </attribute>
+              <attribute>
+                <name>a</name>
+                <type>n</type>
+              </attribute>
+              <attribute>
+                <name>c</name>
+                <type>boolean</type>
+              </attribute>
+              <attribute>
+                <name>b</name>
+                <type>StringArray</type>
+              </attribute>
+            </attributes>
+            <methods>
+              <method>
+                <name>Constructor</name>
+                <malicious/>
+                <parameters>
+                  <parameter>
+                    <param>test</param>
+                    <output>test</output>
+                    <description/>
+                    <return>
+                      <class>com.adwo.adsdk.H</class>
+                    </return>
+                  </parameter>
+                </parameters>
+                <sha256/>
+              </method>
+              <method>
+                <name>AdwoAdBroserActivty.a((boolean)true)</name>
+                <parameters>
+                  <parameter>
+                    <param/>
+                    <output/>
+                    <description/>
+                  </parameter>
+                </parameters>
+                <description>Sets c variable of this instance of n to true</description>
+                <sha256/>
+              </method>
+              <method>
+                <name>AdwoAdBrowserActivity.a((AdwoAdBrowserActivity)this.a).c()</name>
+                <description>Takes instance of n and call its function c()</description>
+              </method>
+            </methods>
+          </class>
+          <class>
+            <name>n</name>
+            <imports/>
+            <attributes/>
+            <methods>
+              <method>
+                <name>c()</name>
+                <description>checkfs if its g RelativeLayout = null -&gt; breaks</description>
+                <description>sets g visibility to 0</description>
+                <description>g.start animation from X=0.0 to X=1.0</description>
+                <description>creates new AnimationListener q(see specs)</description>
+                <calls>
+                  <call>this.a(true)</call>
+                  <call>this.b(true)</call>
+                  <call>this.c(true)</call>
+                </calls>
+              </method>
+              <method>
+                <name>a(boolean bl)</name>
+                <description>checks if k attribute equals null</description>
+                <description>sets it visibility to 0</description>
+                <description>calls new p object</description>
+                <description>setEnabled(true)</description>
+                <calls>
+                  <call>p(this)</call>
+                </calls>
+              </method>
+            </methods>
+          </class>
+          <class>
+            <name>p</name>
+            <imports/>
+            <attributes/>
+            <methods>
+              <method>
+                <name>onClick(View view)</name>
+                <description>checks n.d(n) if != null class n.d(n).a()</description>
+                <description>calls n.a(n, (boolean)true)</description>
+              </method>
+            </methods>
+          </class>
+          <class>
+            <name>H</name>
+            <imports/>
+            <attributes/>
+            <methods>
+              <method>
+                <name>Constructor</name>
+                <description>Sets a (AdwoAdBrowserActivity) to caller instance</description>
+              </method>
+              <method>
+                <name>message.what()</name>
+                <parameters>
+                  <parameter>
+                    <param>1</param>
+                    <output>AdwoAdBrowserActivity.a((boolean)true);</output>
+                    <description>Calls two functions</description>
+                  </parameter>
+                </parameters>
+                <description>It's a handler class which respond to messages with the two methods</description>
+              </method>
+            </methods>
+          </class>
+        </classes>
+      </pkg>
+    </packages>
+  </analisis>
+</app>

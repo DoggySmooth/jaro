@@ -23,10 +23,11 @@ json : $(targetXML)
 
 output: $(targetXML) $(targetJSON)
 
-	mv $(targetXML) output
-	mv $(targetJSON) output	
+	if ! [ -d "./output/$(dirName)" ]; then mkdir ./output/$(dirName) ; fi
+	mv $(targetXML) output/$(dirName)
+	mv $(targetJSON) output/$(dirName)	
 
 html: $(targetJSON)
 
-	python3 ./htmlMalicious/htmlPython.py ./output/$(targetJSON) > ./output/$(targetHTML)
-	cp ./htmlMalicious/style.css ./output/
+	python3 ./htmlMalicious/htmlPython.py ./output/$(dirName)/$(targetJSON) > ./output/$(dirName)/$(targetHTML)
+	tidy -im ./output/$(dirName)/$(targetHTML)

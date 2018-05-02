@@ -77,7 +77,7 @@ ______
 Files creation
 
 All the tools are included in this package token from github.
-A file with an name with the SHA256 of the analised file and a plim extension can be pasted in the root of this project. Executing "make" automatically takes the .plim extension and generate all the data. The output directory paste the result of the above explained features.
+A file with an name with the SHA256 of the analised file and a plim extension can be pasted in the root of this project. Executing "make" automatically takes the .plim extension from the "plims" folder and generate all the data. The output directory paste the result of the above explained features.
 
 
 Graph Generation

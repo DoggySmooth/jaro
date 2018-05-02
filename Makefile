@@ -3,9 +3,11 @@ SHELL = /bin/sh
 targetPLIM=$(shell find . -name '*.plim' -exec basename \{} \;)
 targetXML=$(patsubst %.plim,%.xml, $(targetPLIM))
 targetJSON=$(patsubst %.plim,%.json, $(targetPLIM))
+targetHTML=$(patsubst %.plim,%.html, $(targetPLIM))
+
 dirName=$(patsubst %.plim,%, $(targetPLIM))
 
-all: xml json output 
+all: xml json output html
 
 xml : $(targetPLIM) 
 	./bin/plimc $(targetPLIM) -o $(targetXML)
@@ -24,3 +26,7 @@ output: $(targetXML) $(targetJSON)
 	mv $(targetXML) output
 	mv $(targetJSON) output	
 
+html: $(targetJSON)
+
+	python3 ./htmlMalicious/htmlPython.py ./output/$(targetJSON) > ./output/$(targetHTML)
+	cp ./htmlMalicious/style.css ./output/

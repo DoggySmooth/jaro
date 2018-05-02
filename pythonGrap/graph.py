@@ -1,10 +1,11 @@
 import json
 import graphviz as gv
+import sys
 
 g = gv.Graph(format='svg')
 
 
-j = json.load(open('adwo.json'))
+j = json.load(open(sys.argv[1]))
 
 
 path = j['app']['analisis']['packages']['pkg']['classes']['class']

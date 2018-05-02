@@ -30,9 +30,11 @@
     <packages>
       <pkg>
         <name>com.adwo.adsdk</name>
+        <malicious>"Malicious behavious has been spotted in line 22"</malicious>
         <classes>
           <class>
             <name>AdwoAdBroswerActivity</name>
+            <malicious>"It looks so strange"</malicious>
             <imports>
               <import>com.adwo.adsdk.H</import>
               <import>com.adwo.adsdk.n</import>
@@ -41,6 +43,7 @@
               <attribute>
                 <name>d</name>
                 <type>Handler</type>
+                <malicious>"Calls a function which writes an URL to USB"</malicious>
               </attribute>
               <attribute>
                 <name>a</name>
@@ -58,6 +61,7 @@
             <methods>
               <method>
                 <name>Constructor</name>
+                <malicious/>
                 <parameters>
                   <parameter>
                     <param>test</param>

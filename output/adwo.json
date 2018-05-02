@@ -34,10 +34,12 @@
             "packages": {
                 "pkg": {
                     "name": "com.adwo.adsdk", 
+                    "malicious": "\"Malicious behavious has been spotted in line 22\"", 
                     "classes": {
                         "class": [
                             {
                                 "name": "AdwoAdBroswerActivity", 
+                                "malicious": "\"It looks so strange\"", 
                                 "imports": {
                                     "import": [
                                         "com.adwo.adsdk.H", 
@@ -48,7 +50,8 @@
                                     "attribute": [
                                         {
                                             "name": "d", 
-                                            "type": "Handler"
+                                            "type": "Handler", 
+                                            "malicious": "\"Calls a function which writes an URL to USB\""
                                         }, 
                                         {
                                             "name": "a", 
@@ -68,6 +71,7 @@
                                     "method": [
                                         {
                                             "name": "Constructor", 
+                                            "malicious": null, 
                                             "parameters": {
                                                 "parameter": {
                                                     "param": "test", 

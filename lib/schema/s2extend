@@ -50,6 +50,7 @@
         <xs:complexType>
          <xs:sequence>
           <xs:element name="name" type="xs:string"/>
+	  <xs:element name="malicious" minOccurs="0"/>
           <xs:element name="classes">
            <xs:complexType>
             <xs:sequence>
@@ -57,6 +58,7 @@
               <xs:complexType>
                <xs:sequence>
                 <xs:element name="name"/>
+                <xs:element name="malicious" minOccurs="0"/>
                 <xs:element name="imports">
                  <xs:complexType>
                   <xs:sequence> 
@@ -72,6 +74,7 @@
                      <xs:sequence>
 			<xs:element name="name" type="xs:string"/>
 			<xs:element name="type" type="xs:string"/>
+                        <xs:element name="malicious" minOccurs="0"/>
                      </xs:sequence>
 		    </xs:complexType>
                    </xs:element>
@@ -85,6 +88,7 @@
                     <xs:complexType>
                      <xs:sequence>
                       <xs:element name="name"/>
+                      <xs:element name="malicious" minOccurs="0"/>
                       <xs:element name="parameters" minOccurs="0" >
                        <xs:complexType>
                         <xs:sequence>

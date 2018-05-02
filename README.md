@@ -33,7 +33,7 @@ Features:
 	Maschine to Maschine data transfer and manipulation using well known JSON format	
 	3.HTML 
 
-	Displaying analisis in an easy to read format displaying the malicious behaviour of classes, packages or methods with an description.
+	Displaying analisis in an easy to read format displaying the malicious behaviour 	of classes, packages or methods with an description.
 
 
 Architecture:

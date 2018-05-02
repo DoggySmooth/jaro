@@ -1,0 +1,74 @@
+```SHELL := /bin/bash
+
+# parameters
+ARTIFACT-LIMIT=100
+ARTIFACT-CONFID=95
+ANTIVIRUS-LIMIT=20
+JAVAOPTS="-Xms5G -Xmx20G"
+
+# directories
+INDEXES=datasets/indexes
+TARGETS=datasets/targets
+MALWARES=datasets/malwares
+ARTIFACTS=datasets/artifacts
+ANTIVIRUS=datasets/antivirus
+
+# filenames
+METADATA=meta.csv.gz
+COLNAMES=colnames.txt
+ROWNAMES=rownames.txt
+COLFOLDS=colfolds.tsv.gz
+ROWFOLDS=rowfolds.tsv.gz
+
+# antivirus
+targets_files=$(shell find $(TARGETS) -name '*.json.gz')
+
+env:
+    conda env create --force --file environment.yml
+
+malwares: $(MALWARES)/types.tsv.gz $(MALWARES)/families.tsv.gz;
+
+$(MALWARES)/types.tsv.gz: $(MALWARES)/$(METADATA) $(INDEXES)/types/rows/$(ROWFOLDS)
+    unpigz -c $(INDEXES)/types/rows/$(ROWFOLDS) | pv -clN "consumed" \
+    | ./scripts/malwares.clj -m <(unpigz -c $<) \
+    | pv -clN "selected" | pigz > $@
+
+$(MALWARES)/families.tsv.gz: $(MALWARES)/$(METADATA) $(INDEXES)/families/rows/$(ROWFOLDS)
+    unpigz -c $(INDEXES)/families/rows/$(ROWFOLDS) | pv -clN "consumed" \
+    | ./scripts/malwares.clj -m <(unpigz -c $<) \
+    | pv -clN "selected" | pigz > $@
+
+artifacts: artifact-types artifact-families;
+artifact-types: $(patsubst $(TARGETS)/types/%.json.gz, $(ARTIFACTS)/types/%.tsv.gz, $(targets_files))
+artifact-families: $(patsubst $(TARGETS)/families/%.json.gz, $(ARTIFACTS)/families/%.tsv.gz, $(targets_files))
+
+$(ARTIFACTS)/types/%.tsv.gz: $(TARGETS)/types/%.json.gz $(INDEXES)/types/cols/$(COLFOLDS)
+    unpigz -c $(INDEXES)/types/cols/$(COLFOLDS) | pv -clN "consumed" \
+    | ./scripts/artifacts.clj -c $(ARTIFACT-CONFID) -l $(ARTIFACT-LIMIT) -t <(unpigz -c $<) \
+    | pv -clN "selected" | pigz > $@
+
+$(ARTIFACTS)/families/%.tsv.gz: $(TARGETS)/families/%.json.gz $(INDEXES)/families/cols/$(COLFOLDS)
+    unpigz -c $(INDEXES)/families/cols/$(COLFOLDS) | pv -clN "consumed" \
+    | ./scripts/artifacts.clj -c $(ARTIFACT-CONFID) -l $(ARTIFACT-LIMIT) -t <(unpigz -c $<) \
+    | pv -clN "selected" | pigz > $@
+
+$(ARTIFACTS)/threshold.tsv.gz: $(TARGETS)/families/euphony.json.gz $(INDEXES)/families/cols/$(COLFOLDS)
+    unpigz -c $(INDEXES)/families/cols/$(COLFOLDS) | pv -clN "consumed" \
+    | ./scripts/artifacts.clj -c 50 -l $(ARTIFACT-LIMIT) -t <(unpigz -c $<) \
+    | pv -clN "selected" | pigz > $@
+
+antivirus: antivirus-types antivirus-families;
+antivirus-types: $(patsubst $(TARGETS)/types/%.json.gz, $(ANTIVIRUS)/types/%.tsv, $(targets_files))
+antivirus-families: $(patsubst $(TARGETS)/families/%.json.gz, $(ANTIVIRUS)/families/%.tsv, $(targets_files))
+
+$(ANTIVIRUS)/types/%.tsv: $(TARGETS)/types/%.json.gz $(INDEXES)/types/rows/$(ROWNAMES)
+    cat $(INDEXES)/types/rows/$(ROWNAMES) | pv -clN "consumed" \
+    | ./scripts/antivirus.clj -l $(ANTIVIRUS-LIMIT) -t <(unpigz -c $<) \
+    | pv -clN "selected" > $@
+
+$(ANTIVIRUS)/families/%.tsv: $(TARGETS)/families/%.json.gz $(INDEXES)/families/rows/$(ROWNAMES)
+    cat $(INDEXES)/families/rows/$(ROWNAMES) | pv -clN "consumed" \
+    | ./scripts/antivirus.clj -l $(ANTIVIRUS-LIMIT) -t <(unpigz -c $<) \
+    | pv -clN "selected" > $@```
+
+Message Input

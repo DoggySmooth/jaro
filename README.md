@@ -37,15 +37,17 @@ Features:
 	of classes, packages or methods with an description.
 
 
-
+____________
 
 Architecture:
+___________
 
 The main file JARO is using XML format, from which is generated all the files
 described in "Features". As XML is a verbose and annoying language, we use a python library to generate the XML: PLIM.
 
 PLIM -> XML <-> JSON -> HTML
 
+______________
 
 Technical data
 ______________
@@ -71,7 +73,7 @@ The html generation is based on the generated json file.
 
 PLIM tool is included in the package and with the help of plim compiler "plimc" it generates an XML file from its plimfile. The generated XML goes trough a formating phase with the help of xmllint and then a written XSD file validates the structure of the generated xml.
 
-
+______
 
 HOW TO
 ______

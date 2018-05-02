@@ -1,0 +1,189 @@
+{
+    "app": {
+        "info": {
+            "name": "Unknown", 
+            "sha256": "000A0B1022EC485473DFAACA433F9548911BC7089B6A3C7B47F9EC5541005CA1", 
+            "description": "chinese app", 
+            "releasedate": "uknown", 
+            "malwaretype": "spyware", 
+            "family": "adwo", 
+            "sdk": {
+                "targetsdk": "uknown", 
+                "minsdk": "uknown", 
+                "maxsdk": "unknowm"
+            }, 
+            "activities": {
+                "activity": [
+                    "net.youmi.android.AdActivity", 
+                    "cn.domob.android.ads.DomobActivity", 
+                    "com.adwo.adsdk.AdwoAdBrowserActivity", 
+                    "com.vpon.adon.android.WebInApp", 
+                    "com.google.ads.AdActivity", 
+                    "com.adchina.android.ads.views.AdBrowserView"
+                ]
+            }, 
+            "provider": "GoogleStore", 
+            "permissions": {
+                "permission": [
+                    "ACCESS_FINE_LOCATION", 
+                    "READ_SD"
+                ]
+            }
+        }, 
+        "analisis": {
+            "packages": {
+                "pkg": {
+                    "name": "com.adwo.adsdk", 
+                    "malicious": "package is malicious", 
+                    "classes": {
+                        "class": [
+                            {
+                                "name": "AdwoAdBroswerActivity", 
+                                "malicious": "class is malicious", 
+                                "imports": {
+                                    "import": [
+                                        "com.adwo.adsdk.H", 
+                                        "com.adwo.adsdk.n"
+                                    ]
+                                }, 
+                                "attributes": {
+                                    "attribute": [
+                                        {
+                                            "name": "d", 
+                                            "type": "Handler", 
+                                            "malicious": "This attribute is an malicious class which writes to SD" 
+                                        }, 
+                                        {
+                                            "name": "a", 
+                                            "type": "n"
+                                        }, 
+                                        {
+                                            "name": "c", 
+                                            "type": "boolean"
+                                        }, 
+                                        {
+                                            "name": "b", 
+                                            "type": "StringArray"
+                                        }
+                                    ]
+                                }, 
+                                "methods": {
+                                    "method": [
+                                        {
+                                            "name": "Constructor", 
+                                            "malicious": "This methods executes a apyload", 
+                                            "parameters": {
+                                                "parameter": {
+                                                    "param": "test", 
+                                                    "output": "test", 
+                                                    "description": null, 
+                                                    "return": {
+                                                        "class": "com.adwo.adsdk.H"
+                                                    }
+                                                }
+                                            }, 
+                                            "sha256": null
+                                        }, 
+                                        {
+                                            "name": "AdwoAdBroserActivty.a((boolean)true)", 
+                                            "parameters": {
+                                                "parameter": {
+                                                    "param": null, 
+                                                    "output": null, 
+                                                    "description": null
+                                                }
+                                            }, 
+                                            "description": "Sets c variable of this instance of n to true", 
+                                            "sha256": null
+                                        }, 
+                                        {
+                                            "name": "AdwoAdBrowserActivity.a((AdwoAdBrowserActivity)this.a).c()", 
+                                            "description": "Takes instance of n and call its function c()"
+                                        }
+                                    ]
+                                }
+                            }, 
+                            {
+                                "name": "n", 
+                                "imports": null, 
+                                "attributes": null, 
+                                "methods": {
+                                    "method": [
+                                        {
+                                            "name": "c()",
+					    "malicious": "That method is shaaat", 
+                                            "description": [
+                                                "checkfs if its g RelativeLayout = null -> breaks", 
+                                                "sets g visibility to 0", 
+                                                "g.start animation from X=0.0 to X=1.0", 
+                                                "creates new AnimationListener q(see specs)"
+                                            ], 
+                                            "calls": {
+                                                "call": [
+                                                    "this.a(true)", 
+                                                    "this.b(true)", 
+                                                    "this.c(true)"
+                                                ]
+                                            }
+                                        }, 
+                                        {
+                                            "name": "a(boolean bl)", 
+                                            "description": [
+                                                "checks if k attribute equals null", 
+                                                "sets it visibility to 0", 
+                                                "calls new p object", 
+                                                "setEnabled(true)"
+                                            ], 
+                                            "calls": {
+                                                "call": "p(this)"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }, 
+                            {
+                                "name": "p", 
+                                "imports": null, 
+                                "attributes": null, 
+                                "methods": {
+                                    "method": {
+                                        "name": "onClick(View view)", 
+					"malicious": null,
+                                        "description": [
+                                            "checks n.d(n) if != null class n.d(n).a()", 
+                                            "calls n.a(n, (boolean)true)"
+                                        ]
+                                    }
+                                }
+                            }, 
+                            {
+                                "name": "H", 
+                                "imports": null, 
+                                "attributes": null, 
+                                "methods": {
+                                    "method": [
+                                        {
+                                            "name": "Constructor", 
+                                            "description": "Sets a (AdwoAdBrowserActivity) to caller instance"
+                                        }, 
+                                        {
+                                            "name": "message.what()", 
+                                            "parameters": {
+                                                "parameter": {
+                                                    "param": "1", 
+                                                    "output": "AdwoAdBrowserActivity.a((boolean)true);", 
+                                                    "description": "Calls two functions"
+                                                }
+                                            }, 
+                                            "description": "It's a handler class which respond to messages with the two methods"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

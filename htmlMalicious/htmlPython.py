@@ -54,7 +54,7 @@ def writeMethods(className, meths):
 		print('<div class="box-header"><a>'+methods['name']+'</a></div>')
 		print('<div class="box-body"><table summary="Methods Content">')
 		if 'parameters' in methods:
-			if isinstance(methods['parameters'], dict):
+			if isinstance(methods['parameters']['parameter'], dict):
 				print("<tr><td style='width: 25%;'>Parameter</td><td style='width: 25%;'>"+str(methods['parameters']['parameter']['param'])+"</td>")
 				print("<td style='width: 25%;'>Output</td><td style='width: 25%;'>"+str(methods['parameters']['parameter']['output'])+"</td></tr>")
 				print("<tr><td style='width: 25%;'>Description</td><td>"+str(methods['parameters']['parameter']['description'])+"</td></tr>")
@@ -62,8 +62,18 @@ def writeMethods(className, meths):
 					for key in methods['parameters']['parameter']['return']:
 						print("<tr><td style='width: 25%;'>Return</td><td style='width: 25%;'>"+key +"</td><td>"+methods['parameters']['parameter']['return'][key]+"</td></tr>")
 	
-				if 'sha256' in methods:
-					print("<tr><td>SHA256 </td><td>"+str(methods['sha256'])+"</td>")
+			else:
+				for p in methods['parameters']['parameter']:
+					print("<tr><td style='width: 25%;'>Parameter</td><td style='width: 25%;'>"+str(p['param'])+"</td>")
+					print("<td style='width: 25%;'>Output</td><td style='width: 25%;'>"+str(p['output'])+"</td></tr>")
+					print("<tr><td style='width: 25%;'>Description</td><td>"+str(p['description'])+"</td></tr>")
+					if 'return' in p:
+						for key in p['return']:
+                                                	print("<tr><td style='width: 25%;'>Return</td><td style='width: 25%;'>"+key +"</td><td>"+p['return'][key]+"</td></tr>")
+        
+		if 'sha256' in methods:
+                	print("<tr><td>SHA256 </td><td>"+str(methods['sha256'])+"</td>")
+
 		if 'calls' in methods:
 			if isinstance(methods['calls']['call'], list):
 				for x in range(len(methods['calls']['call'])):

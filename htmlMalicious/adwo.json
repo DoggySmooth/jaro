@@ -34,12 +34,12 @@
             "packages": {
                 "pkg": {
                     "name": "com.adwo.adsdk", 
-                    "malicious": "package is malicious", 
+                    "malicious": "\"Malicious behavious has been spotted in line 22\"", 
                     "classes": {
                         "class": [
                             {
                                 "name": "AdwoAdBroswerActivity", 
-                                "malicious": "class is malicious", 
+                                "malicious": "\"It looks so strange\"", 
                                 "imports": {
                                     "import": [
                                         "com.adwo.adsdk.H", 
@@ -51,7 +51,7 @@
                                         {
                                             "name": "d", 
                                             "type": "Handler", 
-                                            "malicious": "This attribute is an malicious class which writes to SD" 
+                                            "malicious": "\"Calls a function which writes an URL to USB\""
                                         }, 
                                         {
                                             "name": "a", 
@@ -71,7 +71,7 @@
                                     "method": [
                                         {
                                             "name": "Constructor", 
-                                            "malicious": "This methods executes a apyload", 
+                                            "malicious": null, 
                                             "parameters": {
                                                 "parameter": {
                                                     "param": "test", 
@@ -110,8 +110,7 @@
                                 "methods": {
                                     "method": [
                                         {
-                                            "name": "c()",
-					    "malicious": "That method is shaaat", 
+                                            "name": "c()", 
                                             "description": [
                                                 "checkfs if its g RelativeLayout = null -> breaks", 
                                                 "sets g visibility to 0", 
@@ -148,7 +147,6 @@
                                 "methods": {
                                     "method": {
                                         "name": "onClick(View view)", 
-					"malicious": null,
                                         "description": [
                                             "checks n.d(n) if != null class n.d(n).a()", 
                                             "calls n.a(n, (boolean)true)"

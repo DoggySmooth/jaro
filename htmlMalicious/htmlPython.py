@@ -3,7 +3,7 @@ import sys
 
 j = json.load(open(sys.argv[1]))
 
-print('<!DOCTYPE html><html lang="en"><head><title>Smoothin</title><meta name="description" content="Login"><meta name="Smooth" content="SitePoint"><link rel="stylesheet" href="../../lib/styles/style.css" type="text/css"><script type="application/javascript">function toggle(attr) {var choice = document.getElementById(attr).style.display; if (choice == "block"){document.getElementById(attr).style.display = "none"; } else {document.getElementById(attr).style.display = "block"; }}</script></head><body><div class="horizontal-menu"><a class="search"> Teeeeeeeeeeeeeeeeeeeeest </a></div><div class="vertical-menu"><a class="logo">Jaro</a><a>Link 1</a><a>Link 2</a><a>Link 3</a><a> Link 4 </a></div><div class="content"><div class="box"><div class="box-header"><a> App </a></div><div class="box-content"><table summary="app content"><tr><td>Constructor</td></tr><tr><td>android.permission.ACCESS_COARSE_LOCATION</td></tr></table></div>')
+print('<!DOCTYPE html><html lang="en"><head><title>Smoothin</title><meta name="description" content="Login"><meta name="Smooth" content="SitePoint"><link rel="stylesheet" href="../lib/styles/style.css" type="text/css"><script type="application/javascript">function toggle(attr) {var choice = document.getElementById(attr).style.display; if (choice == "block"){document.getElementById(attr).style.display = "none"; } else {document.getElementById(attr).style.display = "block"; }}</script></head><body><div class="horizontal-menu"><a class="search"> Teeeeeeeeeeeeeeeeeeeeest </a></div><div class="vertical-menu"><a class="logo">Jaro</a><a>Link 1</a><a>Link 2</a><a>Link 3</a><a> Link 4 </a></div><div class="content"><div class="box"><div class="box-header"><a> App </a></div><div class="box-content"><table summary="app content"><tr><td>Constructor</td></tr><tr><td>android.permission.ACCESS_COARSE_LOCATION</td></tr></table></div>')
 
 def writePKG(var):
 
@@ -21,16 +21,23 @@ def writeImports(className, imps):
 	print('<div class="box-header"><a> Imports </a><button type="button" onclick="toggle('+"'"+'importsContent'+className+"'"+')">ClickMe</button></div>')
 
 	print('<div class="box-body" id="importsContent'+className+'" ><table summary="Import Content">')
-	for imports in imps:
-		print('<tr><td>'+imports+'</td></tr>')
+	if isinstance(imps, list):
+		for imports in imps:
+			print('<tr><td>'+imports+'</td></tr>')
+	else:
+		print('<tr><td>'+imps+'</td></tr>')
 	print('</table></div>')
 
 def writeAttributes(className, attrs):
 
 	print('<div class="box-header"><a> Attributes </a></div>')
 	print('<div class="box-body"><table summary="Attributes Content">')
-	for attributes in attrs:
-        	print("<tr><td>Name</td><td>"+attributes['name']+"</td><td>Type</td><td>"+attributes['type']+"</td></tr>")
+	if isinstance(attrs, list):
+		for attributes in attrs:
+        		print("<tr><td>Name</td><td>"+attributes['name']+"</td><td>Type</td><td>"+attributes['type']+"</td></tr>")
+	else:
+		print("<tr><td>Name</td><td>"+attrs['name']+"</td><td>Type</td><td>"+attrs['type']+"</td></tr>")
+
 	print('</table></div>')
 	
 def writeDicMethods(className, meths):
@@ -69,42 +76,52 @@ def writeMethods(className, meths):
 	print('</div>')
 
 
-path = j['app']['analisis']['packages']
+path = j['app']['analisis']['packages']['pkg']
 mal = 'malicious'
-classes = j['app']['analisis']['packages']['pkg']['classes']
 
-def malicious():
+if isinstance(path, dict):
+	path = [path]
+	
+
+def malicious(path):
 	
 	print('<div class="box-header"><a> Malicious artefacts </a></div>')
 	for i in path:
-		if mal in path[i]:
-			print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Package</td><td style="width: 40%;">'+path[i]['name']+'</td><td>'+path[i]['malicious']+'</td></tr></table></div>')
-		for className in path[i]['classes']['class']:
+		if mal in i:
+			print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Package</td><td style="width: 40%;">'+i['name']+'</td><td>'+i['malicious']+'</td></tr></table></div>')
+		if isinstance(i['classes']['class'], dict):
+			i['classes']['class'] = [i['classes']['class']]
+		for className in i['classes']['class']:
 			if mal in className:
-				print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Class</td><td style="width: 40%;">'+path[i]['name']+'.<a style="color: red;">'+className['name']+'</a></td><td>'+className['malicious']+'</td></tr></table></div>')
-			if (className['attributes'] and not isinstance(className['attributes']['attribute'], dict)):
-				for attr in className['attributes']['attribute']:
-					if mal in attr:
-						print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Attribute</td><td style="width: 40%;">'+path[i]['name']+'.'+className['name']+' <a style="color: red;">'+attr['name']+'</a></td><td>'+attr['malicious']+'</td></tr></table></div>')
+				print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Class</td><td style="width: 40%;">'+i['name']+'.<a style="color: red;">'+className['name']+'</a></td><td>'+className['malicious']+'</td></tr></table></div>')
+			if (className['attributes']):
+				if isinstance(className['attributes']['attribute'],list):
+					for attr in className['attributes']['attribute']:
+						if mal in attr:
+							print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Attribute</td><td style="width: 40%;">'+i['name']+'.'+className['name']+' <a style="color: red;">'+attr['name']+'</a></td><td>'+attr['malicious']+'</td></tr></table></div>')
+				else:
+					if mal in className['attributes']['attribute']:
+						print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Attribute</td><td style="width: 40%;">'+i['name']+'.'+className['name']+' <a style="color: red;">'+className['attributes']['attribute']['name']+'</a></td><td>'+className['attributes']['attribute']['malicious']+'</td></tr></table></div>')
+
 
 			if (className['methods'] and not isinstance(className['methods']['method'], dict)):					
 				for method in className['methods']['method']:
 					if mal in method:	
-						print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Method</td><td style="width: 40%;">'+path[i]['name']+'.'+className['name']+' <a style="color: red;">'+method['name']+'</a></td><td>'+str(method['malicious'])+'</td></tr></table></div>')
-malicious()
+						print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Method</td><td style="width: 40%;">'+i['name']+'.'+className['name']+' <a style="color: red;">'+method['name']+'</a></td><td>'+str(method['malicious'])+'</td></tr></table></div>')
+malicious(path)
 
 for i in path:
-	writePKG(path[i]['name'])
+	writePKG(i['name'])
 	
-	for className in path[i]['classes']['class']:
+	for className in i['classes']['class']:
 		writeClass(className['name'])
 		if 'description' in className:
 			classAddDesc(className['name'], className['description'])
 
-		if (className['imports'] and not isinstance(className['imports']['import'], dict)):
+		if (className['imports']):
 			writeImports(className['name'], className['imports']['import'])
 
-		if (className['attributes'] and not isinstance(className['attributes']['attribute'], dict)):
+		if (className['attributes'] ):
 			writeAttributes(className['name'], className['attributes']['attribute'])
 		if (className['methods'] and not isinstance(className['methods']['method'], dict)):
 			writeMethods(className['name'], className['methods']['method'])

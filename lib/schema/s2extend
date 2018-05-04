@@ -46,7 +46,7 @@
     <xs:element name="packages">
      <xs:complexType>
       <xs:sequence>
-       <xs:element name="pkg">
+       <xs:element name="pkg" maxOccurs="unbounded">
         <xs:complexType>
          <xs:sequence>
           <xs:element name="name" type="xs:string"/>

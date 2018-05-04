@@ -7,18 +7,18 @@ print('<!DOCTYPE html><html lang="en"><head><title>Smoothin</title><meta name="d
 
 def writePKG(var):
 
-	print('<div class="box-header"><a> Package '+var+' </a><button onclick="toggle('+"'"+'packageContent'+var+"'"+')">.</button></div><div class="box" id="packageContent'+var+'">')
+	print('<div class="box-header"><a> Package '+var+' </a><button onclick="toggle('+"'"+'packageContent'+var+"'"+')">ClickMe</button></div><div class="box" id="packageContent'+var+'">')
 
 def writeClass(var):
 
-	print('<div class="box-header"><a> Class '+var+'</a><button onclick="toggle('+"'"+'classContent'+var+"'"+')">.</button></div><div class="box-ar" id="classContent'+var+'">')
+	print('<div class="box-header"><a> Class '+var+'</a><button onclick="toggle('+"'"+'classContent'+var+"'"+')">ClickMe</button></div><div class="box-ar" id="classContent'+var+'">')
 
 def classAddDesc(className,var):
 	print('<div class="box-body" id="descContent'+className+'" ><table summary="Class content"><tr><td>'+var+'</td></tr></table></div>')
 	
 def writeImports(className, imps):
 
-	print('<div class="box-header"><a> Imports </a></div>')
+	print('<div class="box-header"><a> Imports </a><button type="button" onclick="toggle('+"'"+'importsContent'+className+"'"+')">ClickMe</button></div>')
 
 	print('<div class="box-body" id="importsContent'+className+'" ><table summary="Import Content">')
 	if isinstance(imps, list):
@@ -167,7 +167,7 @@ for i in path:
 
 		elif (className['methods'] and isinstance(className['methods']['method'], dict)):
 			writeDicMethods(className['name'], className['methods']['method'])	
-	print('</div>')			
+			
 print('</div></div></div></html>')
 
 

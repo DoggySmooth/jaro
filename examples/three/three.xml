@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<app>
+  <info>
+    <name>Unknown</name>
+    <sha256>000A0B1022EC485473DFAACA433F9548911BC7089B6A3C7B47F9EC5541005CA1</sha256>
+    <description>chinese app</description>
+    <releasedate>uknown</releasedate>
+    <malwaretype>spyware</malwaretype>
+    <family>adwo</family>
+    <sdk>
+      <targetsdk>uknown</targetsdk>
+      <minsdk>uknown</minsdk>
+      <maxsdk>unknowm</maxsdk>
+    </sdk>
+    <activities>
+      <activity>net.youmi.android.AdActivity</activity>
+      <activity>cn.domob.android.ads.DomobActivity</activity>
+      <activity>com.adwo.adsdk.AdwoAdBrowserActivity</activity>
+      <activity>com.vpon.adon.android.WebInApp</activity>
+      <activity>com.google.ads.AdActivity</activity>
+      <activity>com.adchina.android.ads.views.AdBrowserView</activity>
+    </activities>
+    <provider>GoogleStore</provider>
+    <permissions>
+      <permission>ACCESS_FINE_LOCATION</permission>
+      <permission>READ_SD</permission>
+    </permissions>
+  </info>
+  <analisis>
+    <packages>
+      <pkg>
+        <name>com.adwo.adsdk</name>
+        <malicious>"Malicious behavious has been spotted in line 22"</malicious>
+        <classes>
+          <class>
+            <name>AdwoAdBroswerActivity</name>
+            <malicious>"It looks so strange"</malicious>
+            <imports>
+              <import>com.adwo.adsdk.H</import>
+            </imports>
+            <attributes>
+              <attribute>
+                <name>d</name>
+                <type>Handler</type>
+                <malicious>"Calls a function which writes an URL to USB"</malicious>
+              </attribute>
+            </attributes>
+            <methods>
+              <method>
+                <name>Constructor</name>
+                <malicious/>
+                <parameters>
+                  <parameter>
+                    <param>test</param>
+                    <output>test</output>
+                    <description/>
+                    <return>
+                      <class>com.adwo.adsdk.H</class>
+                    </return>
+                  </parameter>
+                </parameters>
+                <sha256/>
+              </method>
+            </methods>
+          </class>
+        </classes>
+      </pkg>
+    </packages>
+  </analisis>
+</app>

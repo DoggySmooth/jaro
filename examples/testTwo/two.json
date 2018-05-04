@@ -1,0 +1,78 @@
+{
+    "app": {
+        "info": {
+            "name": "Unknown", 
+            "sha256": "000A0B1022EC485473DFAACA433F9548911BC7089B6A3C7B47F9EC5541005CA1", 
+            "description": "chinese app", 
+            "releasedate": "uknown", 
+            "malwaretype": "spyware", 
+            "family": "adwo", 
+            "sdk": {
+                "targetsdk": "uknown", 
+                "minsdk": "uknown", 
+                "maxsdk": "unknowm"
+            }, 
+            "activities": {
+                "activity": [
+                    "net.youmi.android.AdActivity", 
+                    "cn.domob.android.ads.DomobActivity", 
+                    "com.adwo.adsdk.AdwoAdBrowserActivity", 
+                    "com.vpon.adon.android.WebInApp", 
+                    "com.google.ads.AdActivity", 
+                    "com.adchina.android.ads.views.AdBrowserView"
+                ]
+            }, 
+            "provider": "GoogleStore", 
+            "permissions": {
+                "permission": [
+                    "ACCESS_FINE_LOCATION", 
+                    "READ_SD"
+                ]
+            }
+        }, 
+        "analisis": {
+            "packages": {
+                "pkg": {
+                    "name": "com.adwo.adsdk", 
+                    "malicious": "\"Malicious behavious has been spotted in line 22\"", 
+                    "classes": {
+                        "class": {
+                            "name": "AdwoAdBroswerActivity", 
+                            "malicious": "\"It looks so strange\"", 
+                            "imports": {
+                                "import": "com.adwo.adsdk.H"
+                            }, 
+                            "attributes": {
+                                "attribute": [
+                                    {
+                                        "name": "d", 
+                                        "type": "Handler", 
+                                        "malicious": "\"Calls a function which writes an URL to USB\""
+                                    }, 
+                                    {
+                                        "name": "a", 
+                                        "type": "n"
+                                    }, 
+                                    {
+                                        "name": "c", 
+                                        "type": "boolean"
+                                    }, 
+                                    {
+                                        "name": "b", 
+                                        "type": "StringArray"
+                                    }
+                                ]
+                            }, 
+                            "methods": {
+                                "method": {
+                                    "name": "AdwoAdBrowserActivity.a((AdwoAdBrowserActivity)this.a).c()", 
+                                    "description": "Takes instance of n and call its function c()"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -38,21 +38,11 @@ app
       malicious "It looks so strange"
       imports 
        import com.adwo.adsdk.H
-       import com.adwo.adsdk.n
       attributes
         attribute
          name d 
          type Handler
          malicious "Calls a function which writes an URL to USB"
-        attribute 
-         name a
-         type n
-        attribute
-         name c 
-         type boolean
-        attribute 
-         name b
-         type StringArray
       methods
         method
          name Constructor
@@ -65,16 +55,12 @@ app
            return
             class com.adwo.adsdk.H
          sha256
-        method
-         name AdwoAdBroserActivty.a((boolean)true)
-         parameters
-          parameter
-           param
-           output
-           description
-         description Sets c variable of this instance of n to true
-         sha256
-        method
-         name AdwoAdBrowserActivity.a((AdwoAdBrowserActivity)this.a).c()
-         description Takes instance of n and call its function c()
-
+   pkg 
+    name com.test
+    classes 
+     class
+      name NeverHearder
+      malicious That class contains an encryptor
+      imports
+      attributes
+      methods

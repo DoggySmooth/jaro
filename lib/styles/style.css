@@ -103,6 +103,16 @@ body {
 
 }
 
+.box-header button{
+	
+	height: 22px;
+	background-image: url('arrow.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: black;
+	margin-left: 5px;
+}
+
 .box-body{
 
 	display: block;

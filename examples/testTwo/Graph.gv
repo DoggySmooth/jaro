@@ -1,0 +1,24 @@
+graph {
+	packages [shape=square]
+	"com.adwo.adsdk" [fillcolor=red style=filled]
+	packages -- "com.adwo.adsdk"
+	"classcom.adwo.adsdk" [label=class shape=square]
+	"com.adwo.adsdk" -- "classcom.adwo.adsdk"
+	AdwoAdBroswerActivity [fillcolor=red style=filled]
+	"classcom.adwo.adsdk" -- AdwoAdBroswerActivity
+	importsAdwoAdBroswerActivity [label=imports]
+	AdwoAdBroswerActivity -- importsAdwoAdBroswerActivity
+	"com.adwo.adsdk.H"
+	importsAdwoAdBroswerActivity -- "com.adwo.adsdk.H"
+	methodsAdwoAdBroswerActivity [label=methods]
+	AdwoAdBroswerActivity -- methodsAdwoAdBroswerActivity
+	"AdwoAdBrowserActivity.a((AdwoAdBrowserActivity)this.a).c()"
+	methodsAdwoAdBroswerActivity -- "AdwoAdBrowserActivity.a((AdwoAdBrowserActivity)this.a).c()"
+	attributesAdwoAdBroswerActivity [label=attributes]
+	AdwoAdBroswerActivity -- attributesAdwoAdBroswerActivity
+	d [fillcolor=red style=filled]
+	attributesAdwoAdBroswerActivity -- d
+	attributesAdwoAdBroswerActivity -- a
+	attributesAdwoAdBroswerActivity -- c
+	attributesAdwoAdBroswerActivity -- b
+}

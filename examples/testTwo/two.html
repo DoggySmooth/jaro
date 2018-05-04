@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html lang="en">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+
+  <title>Smoothin</title>
+  <meta name="description" content="Login">
+  <meta name="Smooth" content="SitePoint">
+  <link rel="stylesheet" href="../../lib/styles/style.css" type=
+  "text/css">
+  <script type="application/javascript">
+function toggle(attr) {var choice = document.getElementById(attr).style.display; if (choice == "block"){document.getElementById(attr).style.display = "none"; } else {document.getElementById(attr).style.display = "block"; }}
+  </script>
+</head>
+
+<body>
+  <div class="horizontal-menu">
+    <a class="search">Teeeeeeeeeeeeeeeeeeeeest</a>
+  </div>
+
+  <div class="vertical-menu">
+    <a class="logo">Jaro</a><a>Link 1</a><a>Link 2</a><a>Link 3</a>
+    <a>Link 4</a>
+  </div>
+
+  <div class="content">
+    <div class="box">
+      <div class="box-header">
+        <a>App</a>
+      </div>
+
+      <div class="box-content">
+        <table summary="app content">
+          <tr>
+            <td>Constructor</td>
+          </tr>
+
+          <tr>
+            <td>android.permission.ACCESS_COARSE_LOCATION</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="box-header">
+        <a>Malicious artefacts</a>
+      </div>
+
+      <div class="box-body">
+        <table summary="malicious">
+          <tr>
+            <td style="width: 10%;">Package</td>
+
+            <td style="width: 40%;">com.adwo.adsdk</td>
+
+            <td>"Malicious behavious has been spotted in line
+            22"</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="box-body">
+        <table summary="malicious">
+          <tr>
+            <td style="width: 10%;">Class</td>
+
+            <td style="width: 40%;">com.adwo.adsdk.<a style=
+            "color: red;">AdwoAdBroswerActivity</a></td>
+
+            <td>"It looks so strange"</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="box-body">
+        <table summary="malicious">
+          <tr>
+            <td style="width: 10%;">Attribute</td>
+
+            <td style="width: 40%;">
+            com.adwo.adsdk.AdwoAdBroswerActivity <a style=
+            "color: red;">d</a></td>
+
+            <td>"Calls a function which writes an URL to USB"</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="box-header">
+        <a>Package com.adwo.adsdk</a> <button onclick=
+        "toggle('packageContentcom.adwo.adsdk')">ClickMe</button>
+      </div>
+
+      <div class="box" id="packageContentcom.adwo.adsdk">
+        <div class="box-header">
+          <a>Class AdwoAdBroswerActivity</a><button onclick=
+          "toggle('classContentAdwoAdBroswerActivity')">ClickMe</button>
+        </div>
+
+        <div class="box-ar" id="classContentAdwoAdBroswerActivity">
+          <div class="box-header">
+            <a>Imports</a> <button type="button" onclick=
+            "toggle('importsContentAdwoAdBroswerActivity')">ClickMe</button>
+          </div>
+
+          <div class="box-body" id=
+          "importsContentAdwoAdBroswerActivity">
+            <table summary="Import Content">
+              <tr>
+                <td>com.adwo.adsdk.H</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="box-header">
+            <a>Attributes</a>
+          </div>
+
+          <div class="box-body">
+            <table summary="Attributes Content">
+              <tr>
+                <td>Name</td>
+
+                <td>d</td>
+
+                <td>Type</td>
+
+                <td>Handler</td>
+              </tr>
+
+              <tr>
+                <td>Name</td>
+
+                <td>a</td>
+
+                <td>Type</td>
+
+                <td>n</td>
+              </tr>
+
+              <tr>
+                <td>Name</td>
+
+                <td>c</td>
+
+                <td>Type</td>
+
+                <td>boolean</td>
+              </tr>
+
+              <tr>
+                <td>Name</td>
+
+                <td>b</td>
+
+                <td>Type</td>
+
+                <td>StringArray</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="box-header">
+            <a>Methods</a>
+          </div>
+
+          <div class="box-header">
+            <a>AdwoAdBrowserActivity.a((AdwoAdBrowserActivity)this.a).c()</a>
+          </div>
+
+          <div class="box-body">
+            <table summary="l">
+              <tr>
+                <td>Description</td>
+
+                <td>Takes instance of n and call its function
+                c()</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

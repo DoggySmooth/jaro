@@ -1,0 +1,33 @@
+graph {
+	packages [shape=square]
+	"com.adwo.adsdk" [fillcolor=red style=filled]
+	packages -- "com.adwo.adsdk"
+	"classcom.adwo.adsdk" [label=class shape=square]
+	"com.adwo.adsdk" -- "classcom.adwo.adsdk"
+	AdwoAdBroswerActivity [fillcolor=red style=filled]
+	"classcom.adwo.adsdk" -- AdwoAdBroswerActivity
+	importsAdwoAdBroswerActivity [label=imports]
+	AdwoAdBroswerActivity -- importsAdwoAdBroswerActivity
+	"com.adwo.adsdk.H"
+	importsAdwoAdBroswerActivity -- "com.adwo.adsdk.H"
+	methodsAdwoAdBroswerActivity [label=methods]
+	AdwoAdBroswerActivity -- methodsAdwoAdBroswerActivity
+	Constructor [fillcolor=red style=filled]
+	methodsAdwoAdBroswerActivity -- Constructor
+	attributesAdwoAdBroswerActivity [label=attributes]
+	AdwoAdBroswerActivity -- attributesAdwoAdBroswerActivity
+	d [fillcolor=red style=filled]
+	attributesAdwoAdBroswerActivity -- d
+	"com.test"
+	packages -- "com.test"
+	"classcom.test" [label=class shape=square]
+	"com.test" -- "classcom.test"
+	NeverHearder [fillcolor=red style=filled]
+	"classcom.test" -- NeverHearder
+	importsNeverHearder [label=imports]
+	NeverHearder -- importsNeverHearder
+	methodsNeverHearder [label=methods]
+	NeverHearder -- methodsNeverHearder
+	attributesNeverHearder [label=attributes]
+	NeverHearder -- attributesNeverHearder
+}

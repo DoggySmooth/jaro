@@ -9,7 +9,7 @@ targetJSOName=$(patsubst %.plim,%.json, $(targetName))
 
 dirName=$(patsubst %.plim,%, $(targetName))
 
-all: xml json output html
+all: xml json graph output html
 
 xml : $(targetPLIM) 
 	./bin/plimc $(targetPLIM) -o $(targetXML)
@@ -28,8 +28,14 @@ output: $(targetXML) $(targetJSON)
 	if ! [ -d "./output/$(dirName)" ]; then mkdir ./output/$(dirName) ; fi
 	mv $(targetXML) output/$(dirName)
 	mv $(targetJSON) output/$(dirName)	
+	mv Graph.gv.svg output/$(dirName)
+	rm Graph.gv
 
 html: $(targetJSON)
 
 	python3 ./htmlMalicious/htmlPython.py ./output/$(dirName)/$(targetJSOName) > ./output/$(dirName)/$(targetHTML)
 	tidy -im ./output/$(dirName)/$(targetHTML)
+
+graph: $(targetJSON)
+
+	python3 ./bin/graph.py $(targetJSON) 

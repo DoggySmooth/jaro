@@ -26,27 +26,27 @@ app
   permissions
    permission ACCESS_FINE_LOCATION
    permission READ_SD
- 
+
  analisis
   packages
    pkg
     name com.adwo.adsdk
-    malicious This package is involved in creating an WebView for misleading the user clicks to click on malicious adds.
+    malicious "Malicious behavious has been spotted in line 22"
     classes
      class
-      name AdwoAdBroswerActivity
-      malicious AdwoAdBowserAcitivity creates a malicious WebView
-      imports
+      name AdwoAdBroswerActivity 
+      malicious "It looks so strange"
+      imports 
        import com.adwo.adsdk.H
       attributes
         attribute
-         name d
+         name d 
          type Handler
-         malicious This attribute is a Handler for executing commands within the WebView
+         malicious "Calls a function which writes an URL to USB"
       methods
         method
          name Constructor
-         malicious The constructor instantiate the attribute "d" by calling com.adwo.adsdk.H()
+         malicious
          parameters
           parameter
            param test
@@ -54,23 +54,13 @@ app
            description
            return
             class com.adwo.adsdk.H
-         sha256 BB4604AB45F65A30F66A14546A720F806A432A2BE374C88999D9C1793FECA68B
-   pkg
+         sha256
+   pkg 
     name com.test
-    classes
+    classes 
      class
       name NeverHearder
       malicious That class contains an encryptor
       imports
       attributes
       methods
-       method
-        name a(string)
-        malicious This method is an encryptor. It takes a string and encrypt the data with its subroutine.
-        parameters
-         parameter
-          param abcdef
-          output fedcba
-          description By testing various string we found that the encryptor reverts whatever string is passed as paramter.
-        sha256 cgfjhvkjlbkafiasvlasifbasiuohr3434rzft6i7tzug7o8rgzub32g23g23t2g42
-

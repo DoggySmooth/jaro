@@ -147,6 +147,11 @@ def malicious(path):
 				for method in className['methods']['method']:
 					if mal in method:	
 						print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Method</td><td style="width: 40%;">'+i['name']+'.'+className['name']+' <a style="color: red;">'+method['name']+'</a></td><td>'+str(method['malicious'])+'</td></tr></table></div>')
+			elif (className['methods'] and isinstance(className['methods']['method'], dict)):
+				if mal in className['methods']['method']:
+					print('<div class="box-body"><table summary="malicious"><tr><td style="width: 10%;">Method</td><td style="width: 40%;">'+i['name']+'.'+className['name']+' <a style="color: red;">'+className['methods']['method']['name']+'</a></td><td>'+str(className['methods']['method']['malicious'])+'</td></tr></table></div>')
+
+
 malicious(path)
 
 for i in path:

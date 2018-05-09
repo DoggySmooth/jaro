@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="app">
+ <xs:complexType>
+ <xs:sequence>
+  <xs:element name="info">
+    <xs:complexType>
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="sha256" type="xs:string"/>
+      <xs:element name="description" type="xs:string"/> 
+      <xs:element name="releasedate" type="xs:string"/>
+      <xs:element name="malwaretype" type="xs:string"/>
+      <xs:element name="family" type="xs:string"/>
+      <xs:element name="sdk">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="targetsdk" type="xs:string"/>
+            <xs:element name="minsdk" type="xs:string"/>
+            <xs:element name="maxsdk" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="activities">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="activity" type="xs:string" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="provider"/>
+      <xs:element name="permissions">
+       <xs:complexType>
+        <xs:sequence>
+         <xs:element name="permission" maxOccurs="unbounded"/>
+        </xs:sequence>
+       </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+ <xs:element name="analisis">
+  <xs:complexType>
+   <xs:sequence>
+    <xs:element name="packages">
+     <xs:complexType>
+      <xs:sequence>
+       <xs:element name="pkg" maxOccurs="unbounded">
+        <xs:complexType>
+         <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+	  <xs:element name="malicious" minOccurs="0"/>
+          <xs:element name="classes">
+           <xs:complexType>
+            <xs:sequence>
+             <xs:element name="class" maxOccurs="unbounded">
+              <xs:complexType>
+               <xs:sequence>
+                <xs:element name="name"/>
+                <xs:element name="malicious" minOccurs="0"/>
+                <xs:element name="imports">
+                 <xs:complexType>
+                  <xs:sequence> 
+                   <xs:element name="import" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                 </xs:complexType>
+                </xs:element>
+                <xs:element name="attributes">
+                 <xs:complexType>
+                  <xs:sequence> 
+                   <xs:element name="attribute" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                     <xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="type" type="xs:string"/>
+                        <xs:element name="malicious" minOccurs="0"/>
+                     </xs:sequence>
+		    </xs:complexType>
+                   </xs:element>
+                  </xs:sequence>
+                 </xs:complexType>
+                </xs:element>
+                <xs:element name="methods"> 
+                 <xs:complexType>
+                  <xs:sequence>
+                   <xs:element name="method" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                     <xs:sequence>
+                      <xs:element name="name"/>
+                      <xs:element name="malicious" minOccurs="0"/>
+                      <xs:element name="parameters" minOccurs="0" >
+                       <xs:complexType>
+                        <xs:sequence>
+                         <xs:element name="parameter" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                           <xs:sequence>
+                            <xs:element name="param"/>
+                            <xs:element name="output"/>
+                            <xs:element name="description" type="xs:string"/>
+                            <xs:element name="calls" minOccurs="0">
+                             <xs:complexType>
+                              <xs:sequence>
+                               <xs:element name="call" maxOccurs="unbounded"/>
+                              </xs:sequence>
+                             </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="return" minOccurs="0">
+                             <xs:complexType>
+                              <xs:sequence>
+                               <xs:element name="class"/>
+                              </xs:sequence>
+                             </xs:complexType>
+                            </xs:element>
+                        
+                           </xs:sequence>
+                          </xs:complexType>
+                         </xs:element>
+                        </xs:sequence>
+                       </xs:complexType>
+                      </xs:element>
+                      <xs:element name="description" minOccurs="0" maxOccurs="unbounded"/>
+                      <xs:element name="calls" minOccurs="0">
+                       <xs:complexType>
+                        <xs:sequence>
+                         <xs:element name="call" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                       </xs:complexType>
+                      </xs:element>
+                      <xs:element name="sha256" minOccurs="0"/>
+                     </xs:sequence>
+                    </xs:complexType>
+                   </xs:element>
+                  </xs:sequence>
+                 </xs:complexType> 
+                </xs:element>
+               </xs:sequence>
+              </xs:complexType>
+             </xs:element>
+            </xs:sequence>
+           </xs:complexType>
+          </xs:element>
+         </xs:sequence>
+        </xs:complexType>
+       </xs:element>
+      </xs:sequence>
+     </xs:complexType>
+
+
+
+    </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+ </xs:element>
+
+ </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+</xs:schema> 

@@ -12,30 +12,32 @@ dirName=$(patsubst %.plim,%, $(targetName))
 all: xml json graph html output
 
 xml : $(targetPLIM) 
-	./bin/generateXML.py $(targetPLIM) $(targetXML)
+	@./bin/generateXML.py $(targetPLIM) $(targetXML)
+	@rm $(targetXML) 
+	@mv tmp.xml $(targetXML) 
 
 json : $(targetXML)
-	./bin/generateJSON.py $(targetJSON) $(targetXML)
+	@./bin/generateJSON.py $(targetJSON) $(targetXML)
 
-	rm $(targetJSON)
-	mv tmp.json $(targetJSON)
+	@rm $(targetJSON)
+	@mv tmp.json $(targetJSON)
 
 
 output: $(targetXML) $(targetJSON) 
 
-	if ! [ -d "./output/$(dirName)" ]; then mkdir ./output/$(dirName) ; fi
-	mv $(targetXML) output/$(dirName)
-	mv $(targetJSON) output/$(dirName)	
-	mv $(targetHTML) output/$(dirName)
-	mv Graph.gv.svg output/$(dirName)
+	@if ! [ -d "./output/$(dirName)" ]; then mkdir ./output/$(dirName) ; fi
+	@mv $(targetXML) output/$(dirName)
+	@mv $(targetJSON) output/$(dirName)	
+	@mv $(targetHTML) output/$(dirName)
+	@mv Graph.gv.svg output/$(dirName)
 
 html: $(targetJSON)
 
-	./bin/generateHTML.py $(targetJSON) $(targetHTML)
-	rm $(targetHTML)
-	mv tmp.html $(targetHTML)
+	@./bin/generateHTML.py $(targetJSON) $(targetHTML)
+	@rm $(targetHTML)
+	@mv tmp.html $(targetHTML)
 
 graph: $(targetJSON)
 
-	python3 ./bin/graph.py $(targetJSON) 
-	rm Graph.gv
+	@python3 ./bin/graph.py $(targetJSON) 
+	@rm Graph.gv

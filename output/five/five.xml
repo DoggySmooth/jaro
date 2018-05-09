@@ -1,0 +1,94 @@
+<app>
+  <info>
+    <name>Unknown</name>
+    <sha256>000A0B1022EC485473DFAACA433F9548911BC7089B6A3C7B47F9EC5541005CA1</sha256>
+    <description>chinese app</description>
+    <releasedate>uknown</releasedate>
+    <malwaretype>spyware</malwaretype>
+    <family>adwo</family>
+    <sdk>
+      <targetsdk>uknown</targetsdk>
+      <minsdk>uknown</minsdk>
+      <maxsdk>unknowm</maxsdk>
+    </sdk>
+    <activities>
+      <activity>net.youmi.android.AdActivity</activity>
+      <activity>cn.domob.android.ads.DomobActivity</activity>
+      <activity>com.adwo.adsdk.AdwoAdBrowserActivity</activity>
+      <activity>com.vpon.adon.android.WebInApp</activity>
+      <activity>com.google.ads.AdActivity</activity>
+      <activity>com.adchina.android.ads.views.AdBrowserView</activity>
+    </activities>
+    <provider>GoogleStore</provider>
+    <permissions>
+      <permission>ACCESS_FINE_LOCATION</permission>
+      <permission>READ_SD</permission>
+    </permissions>
+  </info>
+  <analisis>
+    <packages>
+      <pkg>
+        <name>com.adwo.adsdk</name>
+        <malicious>This package is involved in creating an WebView for misleading the user clicks to click on malicious adds.</malicious>
+        <classes>
+          <class>
+            <name>AdwoAdBroswerActivity</name>
+            <malicious>AdwoAdBowserAcitivity creates a malicious WebView</malicious>
+            <imports>
+              <import>com.adwo.adsdk.H</import>
+            </imports>
+            <attributes>
+              <attribute>
+                <name>d</name>
+                <type>Handler</type>
+                <malicious>This attribute is a Handler for executing commands within the WebView</malicious>
+              </attribute>
+            </attributes>
+            <methods>
+              <method>
+                <name>Constructor</name>
+                <malicious>The constructor instantiate the attribute "d" by calling com.adwo.adsdk.H()</malicious>
+                <parameters>
+                  <parameter>
+                    <param>test</param>
+                    <output>test</output>
+                    <description/>
+                    <return>
+                      <class>com.adwo.adsdk.H</class>
+                    </return>
+                  </parameter>
+                </parameters>
+                <sha256>BB4604AB45F65A30F66A14546A720F806A432A2BE374C88999D9C1793FECA68B</sha256>
+              </method>
+            </methods>
+          </class>
+        </classes>
+      </pkg>
+      <pkg>
+        <name>com.test</name>
+        <classes>
+          <class>
+            <name>NeverHearder</name>
+            <malicious>That class contains an encryptor</malicious>
+            <imports/>
+            <attributes/>
+            <methods>
+              <method>
+                <name>a(string)</name>
+                <malicious>This method is an encryptor. It takes a string and encrypt the data with its subroutine.</malicious>
+                <parameters>
+                  <parameter>
+                    <param>abcdef</param>
+                    <output>fedcba</output>
+                    <description>By testing various string we found that the encryptor reverts whatever string is passed as paramter.</description>
+                  </parameter>
+                </parameters>
+                <sha256>cgfjhvkjlbkafiasvlasifbasiuohr3434rzft6i7tzug7o8rgzub32g23g23t2g42</sha256>
+              </method>
+            </methods>
+          </class>
+        </classes>
+      </pkg>
+    </packages>
+  </analisis>
+</app>

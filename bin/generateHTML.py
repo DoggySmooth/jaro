@@ -10,3 +10,6 @@ file = open("tmp.html","w")
 
 os.system("python3 ./bin/htmlPython.py "+json+" > "+html)
 file.write(HTMLBeautifier.beautify(open(html), 4))
+file.close()
+
+print("Generated HTML Sucessfully")

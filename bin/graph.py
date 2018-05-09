@@ -29,7 +29,6 @@ for l in range(len(way)):
 
 
 	for i in range(len(path)):
-		print(i)
 		if 'malicious' in path[i]:
 			g.node(path[i]['name'],style='filled', fillcolor="red")
 		else:
